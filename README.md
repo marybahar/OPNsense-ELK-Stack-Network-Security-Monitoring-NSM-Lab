@@ -1,4 +1,5 @@
 OPNsense + ELK Stack: Network Security Monitoring (NSM) Lab
+
 📌 Project Overview
 This project demonstrates the deployment and configuration of a full-stack SIEM (Security Information and Event Management) pipeline. Using OPNsense as the core firewall and the Elastic Stack (ELK) for centralized logging, I built a system capable of detecting and visualizing real-time network threats.
 
