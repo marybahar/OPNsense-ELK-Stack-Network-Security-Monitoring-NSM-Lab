@@ -35,5 +35,18 @@ filter {
         "dest_port" => "integer"
       }
     }
+
+
+
+
+## 🧠 Technical Challenge: Solving Mapping Conflicts
+During development, I encountered a Mapping Conflict in Kibana where dest_port was being stored as both a string (text) and a long (number).
+
+Cause: Trailing TCP flags (e.g., ,S,1024) were being appended to the port field in raw syslog data.
+
+Solution: I implemented a "catch-all" field (%{?rest_of_msg}) in the Logstash dissect pattern to isolate the numerical port. I then performed an index cleanup via the Elasticsearch API to re-index the data with clean integer types:
+
+Bash
+curl -X DELETE "localhost:9200/opnsense-logs-*"
   }
 }
